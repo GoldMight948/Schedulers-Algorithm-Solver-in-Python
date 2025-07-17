@@ -43,9 +43,25 @@ for i in range(num):
     normalized_tr[i]=ntr #append/input normalized turnaround time in a list
 
 for i in range (num):
-    print("Arrival Time:",arrival_time[i], #prints Arrival Time
-          " Burst Time:",burst_time[i], #prints Burst time
-          " Waiting Time:",waiting_time[i], #prints Waiting Time
-          " Completion Time:",completion_time[i], #prints Completion Time
-          " Turnaround Time:",turnaround_time[i], #prints Turnaround Time
-          " Normalized Turnaround Time:",normalized_tr[i]) #prints Normalized Turnaround Time
+    sum_wt=+waiting_time[i] #total waiting time
+    sum_tr=+turnaround_time[i] #total turnaround time
+    sum_ntr=+normalized_tr[i]  #total normalized turnaround time
+
+
+for i in range(num):
+    arrival, burst = processes[i]
+    print("Arrival Time:", arrival, #prints Arrival Time
+          " Burst Time:", burst,    #prints Burst time
+          " Waiting Time:", waiting_time[i], #prints Waiting Time
+          " Completion Time:", completion_time[i], #prints Completion Time
+          " Turnaround Time:", turnaround_time[i], #prints Turnaround Time
+          " Normalized Turnaround Time:", round(normalized_tr[i], 2))
+    
+# Average calculations
+avg_turnaround = sum(turnaround_time) / num
+avg_normalized = sum(normalized_tr) / num
+avg_waiting = sum(waiting_time) / num
+
+print(f"\nAverage Turnaround Time: {avg_turnaround:.2f}")
+print(f"Average Waiting Time: {avg_waiting:.2f}")
+print(f"Average Normalized Turnaround Time: {avg_normalized:.2f}")
